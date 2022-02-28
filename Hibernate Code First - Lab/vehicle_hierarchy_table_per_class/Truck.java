@@ -1,13 +1,12 @@
 package lab_exercise.vehicle_hierarchy;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 
 @Entity
-@DiscriminatorValue(value = "truck")
+@Table(name = "trucks")
 public class Truck extends Vehicle {
     private static final String TYPE = "truck";
 

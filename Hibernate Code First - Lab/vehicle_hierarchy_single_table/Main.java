@@ -1,28 +1,37 @@
-package lab_exercise.vehicle_hierarchy;
-
 import Tools.ConnectionCreator;
+import relations.BasicLabel;
+import relations.BasicShampoo;
 
 import javax.persistence.EntityManager;
-import java.math.BigDecimal;
 
 public class Main {
+    static EntityManager entityManager;
+
     public static void main(String[] args) {
-        String model = "testModel";
-        BigDecimal price = new BigDecimal("1000");
-        String fuelType = "someFuel";
+       /*
 
-        Car car = new Car(model, price, fuelType, 4);
-        Bike bike = new Bike(model, price, fuelType);
-        Plane plane = new Plane(model, price, fuelType, 344);
-        Truck truck = new Truck(model,price, fuelType, 23.34);
-
-        EntityManager entityManager = ConnectionCreator.getEntityManager();
         entityManager.getTransaction().begin();
 
-        entityManager.persist(car);
-        entityManager.persist(bike);
-        entityManager.persist(plane);
+
+        Truck truck = new Truck(100, 1000);
+        Car car = new Car(4);
+
         entityManager.persist(truck);
+        entityManager.persist(car);
+
+        entityManager.getTransaction().commit();/
+
+        */
+
+        entityManager = ConnectionCreator.getEntityManager();
+        entityManager.getTransaction().begin();
+        BasicLabel basicLabel = new BasicLabel("someLabelName");
+        BasicShampoo shampoo = new BasicShampoo();
+        shampoo.setLabel(basicLabel);
+        basicLabel.setBasicShampoo(shampoo);
+
+        entityManager.persist(basicLabel);
+        entityManager.persist(shampoo);
 
         entityManager.getTransaction().commit();
     }

@@ -5,14 +5,13 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "vehicles")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "DTYPE")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Vehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
-    @Column(insertable = false, updatable = false)
+    @Basic
     private String type;
     @Basic
     private String model;
